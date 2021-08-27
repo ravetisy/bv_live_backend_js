@@ -196,7 +196,7 @@ getRoster = (connectedUsers, chatId) => {
       const id = userData.connectionId || '';
 
       if (
-        userData &&
+        userData != null &&
         userData["externalUserId"] &&
         userData["externalUserId"].includes("#") &&
         userData["chatId"] === chatId
@@ -563,7 +563,7 @@ io.on("connection", async function (socket) {
   const partId = externalUserId ? externalUserId.split("#")[0] : null;
   const isRecorder = socketQuery["isRecorder"] || null;
   const isHost = socketQuery["isHost"] || null;
-  const {conn: {id: socketConnectionId = ""} = {}} = socket || {};
+  const {conn: {id: socketConnectionId = ""} = {}} = socket != null ? {};
   const token = socketQuery["token"];
   const refreshToken = socketQuery["refreshToken"];
   const eventSocket = socketQuery["eventSocket"];
