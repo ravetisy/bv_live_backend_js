@@ -563,7 +563,7 @@ io.on("connection", async function (socket) {
   const partId = externalUserId ? externalUserId.split("#")[0] : null;
   const isRecorder = socketQuery["isRecorder"] || null;
   const isHost = socketQuery["isHost"] || null;
-  const {conn: {id: socketConnectionId = ""} = {}} = socket != null ? {};
+  const {conn: {id: socketConnectionId = ""} = {}} = socket ? socket!= null : {};
   const token = socketQuery["token"];
   const refreshToken = socketQuery["refreshToken"];
   const eventSocket = socketQuery["eventSocket"];
